@@ -1,4 +1,4 @@
-= Overview
+# Overview
 
 We currently generate a very basic functional PDF for reviewing purposes, etc.
 
@@ -19,7 +19,7 @@ The pdf is currently rendered from the yaml model content files using the follow
   - all pdfs are collated using pdfunite into a final pdf document.
 
 
-= Changing the pdf
+# Changing the pdf
 
 To change the content of the pdf: 
 
