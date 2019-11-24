@@ -1,0 +1,31 @@
+= Overview
+
+We currently generate a very basic functional PDF for reviewing purposes, etc.
+
+The current flow is: 
+
+  - yaml + templating + namespacing -> markdown via a custom script
+  - markdown + css -> html via pandoc
+  - html -> pdf via pandoc (using wkhtmltopdf driver)
+
+The pdf is currently rendered from the yaml model content files using the following flow:
+
+  - create a markdown template for a generic business function using mustache templating to insert the data from the yaml files. This is stored in templates/
+    - Since many keys have the same name across different model objects (e.g. id, name, etc.) we need a namespacing concept within the mustache templates to indicate which element we mean (e.g. id from Practice, or from Maturity Level). 
+    - a separate namespace file maps each namespace (e.g. practice) to a physical model file (e.g. Practice G-Education-Guidance.yml). This is auto generated and written to namespaces/
+  - A custom script parses all yaml files and generates a namespace mapping file per (business function, maturity level, activity)
+  - Another script combines each namespace file with a template file to create a markdown file for that (business function, maturity level, activity).
+  - pandoc generates a pdf for each (business function, maturity level, activity) going via html and css.
+  - all pdfs are collated using pdfunite into a final pdf document.
+
+
+= Changing the pdf
+
+To change the content of the pdf: 
+
+  - modify the file(s) in templates/. Use whatever markdown you need and reference any data in the yaml model files via {{namespace:item}} where namespace will refer to a particular object (i.e. yaml file) and item to the key (data) within that file.
+  - make sure the namespace you need is included in the mapping file in namespaces/
+    - the script which generates the namespaces/ mapping files is currently evolving with the pdf template. If you need to use an object which is not currently included in the pdf (i.e. there is no namespace entry referencing it in the namepsaces file) you'll have to look into the script to emit it. Alternatively you can always add it manually to the namespaces mapping file before generating the markdown but this is likely to be cumbersome if you have to do it for many files.
+  - if you're formatting things using css, update the files in css/
+  - generate the html and pdf using pandoc.
+
