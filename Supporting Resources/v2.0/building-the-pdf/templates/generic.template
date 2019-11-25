@@ -9,9 +9,27 @@
 
 {{activity-a:longDescription}}
 
+#### Assessment Questions
+{{question-a:text}}
+
+{{answerset-a:values.text}}
+
+Quality Criteria:
+
+{{question-a:quality}}
+
 
 ### Stream {{stream-b:letter}} : {{stream-b:name}}
 <b>Benefit</b>: <i>{{activity-b:benefit}}</i>
 
 {{activity-b:longDescription}}
+
+#### Assessment Questions
+{{question-b:text}}
+
+{{answerset-b:values.text}}
+
+Quality Criteria:
+
+{{question-b:quality}}
 
