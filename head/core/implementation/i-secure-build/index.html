@@ -1,0 +1,3541 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Secure Build - OWASP SAMM</title>
+  
+  <meta name="description" content="Short Description This practice focuses on creating a consistently repeatable build process and accounting for the security of dependencies.
+Long Description The Secure Build practice emphasises the importance of building software in a standardised, repeatable manner, and of doing so using secure components, including 3rd party software dependencies.
+The first stream focuses on removing any subjectivity from the build process by striving for full automation. An automated build pipeline can include additional automated security checks such as SAST and DAST to gain further assurance and flag security regressions early by failing the build for example.">
+  <meta name="author" content="">
+  
+  <link href="/semantic/semantic.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Open+Sans:300,300i,600,600i,800,800i" rel="stylesheet">
+  
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="icon" href="/img/favicon.png">
+  
+  <meta name="generator" content="Hugo">
+  
+  <link rel="alternate" type="application/atom+xml" href="/index.xml" title="OWASP SAMM">
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" data-no-instant></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127457120-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127457120-1');
+  </script>
+</head>
+<body class="single">
+  <div class="headerback">
+
+    
+
+    <header class="ui massive text menu">
+      <a class="header item" href="/">
+        OWASP SAMM
+      </a>
+      <div class="right menu">
+        
+        <a class="item" href="/summit2019">Open Security Summit 2019</a>
+        
+        <a class="item" href="/events">Events</a>
+        
+        <a class="item" href="/v1-5/downloads/">v1.5</a>
+        
+        <a class="item" href="/v2.0b/introduction/">v2.0 Beta</a>
+        
+        <a class="item" href="/sponsors">Sponsors</a>
+        
+      </div>
+    </header>
+  </div>
+
+  
+
+  <div id="a50pxspacer"></div>
+
+
+
+
+<div class="mainwrapper">
+  <div class="ui inverted vertical menu" id="toc">
+    
+    
+    
+      
+    
+      
+        <h3 class="header item">
+          SAMM Head
+        </h3>
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="item" href="/head/introduction/">
+              Introduction
+            </a>
+          
+        
+          
+            <a class="item" href="/head/feedback/">
+              Feedback
+            </a>
+          
+        
+          
+            <a class="item" href="/head/contributing-to-git/">
+              Contributing
+            </a>
+          
+        
+          
+            <a class="item" href="/head/samm-mapping/">
+              Mapping 1.5 to 2.0
+            </a>
+          
+        
+          
+            <a class="item" href="/head/question_report/">
+              Question Report
+            </a>
+          
+        
+        
+          
+            <div class="item">
+              <h4 class="header">
+                Core Model
+              </h4>
+              
+              
+                
+                  <div class="item">
+                    <h5 class="header">
+                      Governance
+                    </h5>
+                    <div class="menu">
+                      
+                        
+                          <a class="item" href="/head/core/governance/g-strategy-metrics/">
+                            Strategy &amp; Metrics
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/governance/g-policy-compliance/">
+                            Policy &amp; Compliance
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/governance/g-education-guidance/">
+                            Education &amp; Guidance
+                          </a>
+                        
+                      
+                    </div>
+                  </div>
+                
+                  <div class="item">
+                    <h5 class="header">
+                      Design
+                    </h5>
+                    <div class="menu">
+                      
+                        
+                          <a class="item" href="/head/core/design/d-threat-assessment/">
+                            Threat Assessment
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/design/d-security-requirements/">
+                            Security Requirements
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/design/d-security-architecture/">
+                            Security Architecture
+                          </a>
+                        
+                      
+                    </div>
+                  </div>
+                
+                  <div class="item">
+                    <h5 class="header">
+                      Implementation
+                    </h5>
+                    <div class="menu">
+                      
+                        
+                          <a class="item" href="/head/core/implementation/i-secure-build/">
+                            Secure Build
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/implementation/i-secure-deployment/">
+                            Secure Deployment
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/implementation/i-defect-management/">
+                            Defect Management
+                          </a>
+                        
+                      
+                    </div>
+                  </div>
+                
+                  <div class="item">
+                    <h5 class="header">
+                      Verification
+                    </h5>
+                    <div class="menu">
+                      
+                        
+                          <a class="item" href="/head/core/verification/v-architecture-assessment/">
+                            Architecture Assessment
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/verification/v-requirements-driven-testing/">
+                            Requirements Driven Testing
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/verification/v-security-testing/">
+                            Security Testing
+                          </a>
+                        
+                      
+                    </div>
+                  </div>
+                
+                  <div class="item">
+                    <h5 class="header">
+                      Operations
+                    </h5>
+                    <div class="menu">
+                      
+                        
+                          <a class="item" href="/head/core/operations/o-incident-management/">
+                            Incident Management
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/operations/o-environment-management/">
+                            Environment Management
+                          </a>
+                        
+                      
+                        
+                          <a class="item" href="/head/core/operations/o-operational-management/">
+                            Operational Management
+                          </a>
+                        
+                      
+                    </div>
+                  </div>
+                
+              
+            </div>
+          
+        
+      
+    
+      
+    
+      
+    
+    <a class="item" href="https://www.owasp.org/"><img class="ui fluid image" src="/img/owasp.svg" /></a>
+    <a class="item" href="https://creativecommons.org/licenses/by-sa/4.0/"><img class="ui fluid image" src="/img/by-sa.png" /></a>
+
+  </div>
+
+  <main>
+    <div class="ui text container">
+
+      <h1 class="ui huge dividing header">
+        Secure Build
+      </h1>
+
+
+
+      
+      <div class="ui buttons">
+        <a href="https://github.com/OWASP/samm/edit/master/Current%20Releases/head/core/implementation/i-secure-build.md" class="ui blue button"><i class="pencil icon"></i> Edit this page</a>
+        <a href="https://raw.githubusercontent.com/OWASP/samm/master/Current%20Releases/head/core/implementation/i-secure-build.md" target="_blank" class="ui red button"><i class="file code icon"></i> Raw</a>
+      </div>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui large labels">
+        <div class="ui green label">
+          Business function
+          <div class="detail">Implementation</div>
+        </div>
+        <div class="ui orange label">
+          Assigned to
+          <div class="detail">Chris Cooper (chris.cooper@owasp.org)</div>
+        </div>
+        
+        <div class="ui label">
+          Progress
+          <div class="detail"><span class="donut">40/100</span> 40%</div>
+        </div>
+        
+      </div>
+      
+
+      
+
+<h1 id="short-description">Short Description</h1>
+
+<p>This practice focuses on creating a consistently repeatable build process and accounting for the security of dependencies.</p>
+
+<h1 id="long-description">Long Description</h1>
+
+<p>The Secure Build practice emphasises the importance of building software in a standardised, repeatable manner, and of doing so using secure components, including 3rd party software dependencies.</p>
+
+<p>The first stream focuses on removing any subjectivity from the build process by striving for full automation. An automated build pipeline can include additional automated security checks such as SAST and DAST to gain further assurance and flag security regressions early by failing the build for example.</p>
+
+<p>The second stream acknowledges the prevalence of software dependencies in modern applications. It aims to identify them and track their security status in order to contain the impact of their insecurity on an otherwise secure application. In an advanced form, it applies similar security checks to software dependencies as to the application itself.</p>
+
+<h1 id="overview">Overview</h1>
+
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">A: Build Process</th>
+<th align="left">B: Software Dependencies</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Maturity 1 - Build process is repeatable and consistent</td>
+<td align="left">The build process is defined and consistent.</td>
+<td align="left">All application dependencies are identified and documented</td>
+</tr>
+
+<tr>
+<td align="left">Maturity 2 - Build process is optimized and fully integrated into the workflow</td>
+<td align="left">The build process is fully automated and does not require intervention by the developer.</td>
+<td align="left">All components and dependencies are periodically reviewed for known security vulnerabilities and licensing issues</td>
+</tr>
+
+<tr>
+<td align="left">Maturity 3 - Build process helps prevent known defects from entering the production environment.</td>
+<td align="left">Security defects may trigger the build to stop executing</td>
+<td align="left">Components and dependencies are independently scanned for vulnerabilities</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="a-build-process">A: Build Process</h1>
+
+<h2 id="maturity-1">Maturity 1</h2>
+
+<h3 id="benefit">Benefit</h3>
+
+<p>Consistent and repeatable builds help developers focus on application-specific issues, and make it possible to automate builds in the future. This reduces the likelihood of human error during builds which can lead to security vulnerabilities.</p>
+
+<h3 id="activity">Activity</h3>
+
+<p>Define the build process, breaking it down into a set of clear instuctions to either be followed by a person or an automated tool. The process is complete so that the person or tool can follow it consistently each time and produce the same result.</p>
+
+<p>The process definition does not include any secrets (specifically considering those needed during the build process). Use individual credentials that authenticate, authorize, and account to access build tools, and code repositories. Include shared secrets only where you cannot avoid it, managing them with care, preferably via an encrypted password vault.</p>
+
+<p>The build process is stored centrally and accessible to any tools or people who might need access. Do not store or distribute multiple copies, some of which may become outdated.</p>
+
+<p>Review any build tools routinely, ensuring that they are actively maintained by vendors and up-to-date with security patches. Harden each tool&rsquo;s configuration so that it is aligned with vendor guidelines and industry best practices.</p>
+
+<p>Determine a value for each generated artifact that can be later used to verify its integrity, such as a signature or a hash. Protect this value and, if the artifact is signed, the private signing certificate.</p>
+
+<h3 id="questions">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Do you use repeatable build processes?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>You have enough information to recreate the build processes</li>
+                        
+                          <li>Your build documentation up to date</li>
+                        
+                          <li>Your build documentation is stored in an accessible location</li>
+                        
+                          <li>Produced artifact checksums are created during build to support later verification</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h2 id="maturity-2">Maturity 2</h2>
+
+<h3 id="benefit-1">Benefit</h3>
+
+<p>A fully automated build system allows easy integration of automated security checks at all stages of the build process, and ensures separate but consistent build environments.</p>
+
+<h3 id="activity-1">Activity</h3>
+
+<p>Implement the build process as an automated system, so that builds can be executed repeatedly and consistently. The build process is reliable and does not require developer intervention, further reducing the likelihood of human error.</p>
+
+<p>Automation makes it easier to include security checks during the build process. Implement static application security testing (SAST) to run as part of the build process. Refer to guidance in <a href="../v-security-testing">Verification &gt; Security Testing</a> &gt; A3.</p>
+
+<p>The use of an automated system to setup the build pipeline increases reliance on the build tools for security, and makes hardening and maintaining the toolset even more critical. Pay particular attention to the interfaces of those tools, such as web-based portals and how they can be locked-down. The exposure of a build tool to the network could allow a malicious actor to tamper with the integrity of the process. This might, for example, allow malicious code to be built into software.</p>
+
+<p>The automated process may require access to credentials and secrets required to build the software, such as the code signing certificate or access to repositories. Handle these with care. Refer to <a href="i-secure-deployment">Implementation &gt; Secure Deployment</a> &gt; B.</p>
+
+<p>Sign generated artifacts using a certificate that identifies the organization or business unit that built it, such that its integrity and can be verified later.</p>
+
+<h3 id="questions-1">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Are build processes automated?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>Your build tools are hardened as per best practice and vendor guidance</li>
+                        
+                          <li>You encrypt the secrets required by the build tools and control access based on the principle of least privilege</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h2 id="maturity-3">Maturity 3</h2>
+
+<h3 id="benefit-2">Benefit</h3>
+
+<p>You can enforce a minimal clear security baseline in production. You can automatically deploy compliant applications.</p>
+
+<h3 id="activity-2">Activity</h3>
+
+<p>The build process includes automated security checks which break the build if they fail. Static Application Security Testing (SAST), with an appropriate and custom ruleset, is triggered each time the build process executes. Refer to guidance in <a href="../v-security-testing">Verification &gt; Security Testing</a> &gt; A.</p>
+
+<p>The organization sets an appropriate threshold for build failure based on the application&rsquo;s risk appetite. For instance, &ldquo;High&rdquo; and &ldquo;Critical&rdquo; vulnerabilities, or those with a CVSS score above 7.0. The types of vulnerabilities that the organization consider unacceptable in a build and their typical scores/ratings are considered when setting this threshold. An application with more sensitive functions might have a lower threshold, for instance. Trigger warnings for vulnerabilities below the threshold, and log them to a centralized system to track them and take actions.</p>
+
+<p>Put in place  a mechanism to bypass this behaviour when a vulnerability has been accepted or mitigated to stop it from breaking the build. Carefully control and approve it, and log all exceptions with a rationale.</p>
+
+<p>If any of the security tests like SAST are not carried out successfully, the build fails.</p>
+
+<p>If technical limitations prevent the organisation from breaking the build automatically, achieve the same effect via other means, such as a clear policy for the developer not to deploy or execute a build with defects meeting certain criteria.</p>
+
+<p>Handle code signing on a separate centralized server which does not expose the certificate to the system executing the build.</p>
+
+<p>Where possible,  use a deterministic method that outputs byte-for-byte reproducible artifacts. Compare the binary output with that from other equivalent build systems to ensure it hasn&rsquo;t been tampered with.</p>
+
+<h3 id="questions-2">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Do you integrate automated security checks in build processes?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>You have a maximum accepted severity for vulnerabilties</li>
+                        
+                          <li>You log warnings and failures in a centralized system</li>
+                        
+                          <li>Build processes prevent deployment to production when security checks fail</li>
+                        
+                          <li>You select and configure tools to evaluate each application against its security requirements</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h1 id="b-software-dependencies">B: Software Dependencies</h1>
+
+<h2 id="maturity-1-1">Maturity 1</h2>
+
+<h3 id="benefit-3">Benefit</h3>
+
+<p>You know which production components are at risk from a known vulnerable 3rd party dependencies. Dependencies include 3rd party software dependencies and operating system dependencies. 3rd party dependencies often inculde more dependencies (called <em>transitive dependencies</em>).</p>
+
+<h3 id="activity-3">Activity</h3>
+
+<p>Keep a record of all dependencies used throughout the target production environment. This is sometimes referred to as a Bill of Materials (BOM). In building these records, consider the various locations where dependencies might be specified:
+- configuration files
+- the project&rsquo;s directory on disk
+- package management tool
+- code (e.g. via an IDE that supports listing dependencies)</p>
+
+<p>Consider that the different dependencies and aspects of the application may consume entirely different dependencies. For example, if the software package is a web app, cover both the server-side application code and client-side scripts.</p>
+
+<p>The records include the following information about each dependency:</p>
+
+<ul>
+<li>Where it is used or referenced</li>
+<li>Why it is required</li>
+<li>Version used</li>
+<li>License</li>
+<li>Source information (link to repository, author&rsquo;s name, etc.)</li>
+<li>Open source or proprietary</li>
+<li>Support and maintenance status of the dependency</li>
+</ul>
+
+<p>Check the records, whenever practical, to discover any dependencies with known vulnerabilities and update or replace them accordingly.</p>
+
+<p>Ensure that providers actively maintain dependencies, and that they deal with security vulnerabilities appropriately. Gain assurance when dealing with open source dependencies, either through agreements with a commercial vendor, or other means, for example, by looking at repository activity, and the developers&rsquo; responses to security issues raised by the community.</p>
+
+<h3 id="questions-3">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Do you evaluate security risk stemming from used dependencies?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>You have current bill of materials (BOM) for every application</li>
+                        
+                          <li>You can quickly find out which applications are affected by a particular CVE</li>
+                        
+                          <li>You have provably analyzed and addressed findings from dependencies at least once in the last three months</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h2 id="maturity-2-1">Maturity 2</h2>
+
+<h3 id="benefit-4">Benefit</h3>
+
+<p>There is an audit trail of all 3rd party dependencies used in development and you know and track their security status at any given time.</p>
+
+<h3 id="activity-4">Activity</h3>
+
+<p>Evaluate dependencies to establish a whitelist of acceptable code dependencies approved for use within a project, team, or the wider organization.</p>
+
+<p>Alternatively, introduce a central repository of approved dependencies that all software must be built from.</p>
+
+<p>Review dependencies regularly to ensure that:</p>
+
+<ul>
+<li>they remain correctly licensed</li>
+<li>no known and significant vulnerabilities are present</li>
+<li>there is support and active maintenance for the dependency</li>
+<li>there is a good business reason to include the dependency</li>
+</ul>
+
+<p>You may need tools to automate some or all of this process, such as analyzing where the dependency is used, or checking for updates via a package manager. Consider using an automated tool to scan for vulnerable dependencies.</p>
+
+<h3 id="questions-4">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Is 3rd party dependency risk handled by a formal process?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>Dependencies are automatically evaluated for new CVEs</li>
+                        
+                          <li>Above defined criticality threshold, responsible staff is alerted</li>
+                        
+                          <li>License changes with possible impact on legal application usage are automatically detected and alerted</li>
+                        
+                          <li>Usage of unmaintained dependencies is tracked and alerted</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h3 id="quality-indicators">Quality Indicators</h3>
+
+<ul>
+<li>There is an automatically generated BOM for each software release</li>
+<li>You can query the security status of all 3rd party dependencies anytime</li>
+<li>There is a well-defined procedure for addressing vulnerabilities in 3rd party dependencies</li>
+</ul>
+
+<!--
+#### Notes
+Difference with level 1 is not clear enough
+Review being more thorough?
+Tooling is practically required to do this, very hard to get to this maturity level manually [Changed tooling from "desirable" to "necessary". CC]
+Consider whitelisting/blacklisting [Added. CC]
+Consider a curated and controlled central repository for the build. [Added. CC]
+-->
+
+<h2 id="maturity-3-1">Maturity 3</h2>
+
+<h3 id="benefit-5">Benefit</h3>
+
+<p>The application’s security level is more indicative of its real security, by consistently assessing its 3rd party dependencies.</p>
+
+<h3 id="activity-5">Activity</h3>
+
+<p>Perform verification tests against dependencies in the same way you do against the target application. Refer to <a href="../verification/v-security-testing">Verification &gt; Security Testing</a>. Depending on the build process maturity level, the discovery of significant issues might cause the build to fail.</p>
+
+<p>Log results centrally, triage and validate findings appropriately as described in <a href="../implementation/i-defect-management">Implementation &gt; Defect Management</a>. Vulnerable dependencies should be blacklisted and not permitted to be used during builds. Feed findings back to the vendor or open source project, following a set of ethical disclosure guidelines.</p>
+
+<h3 id="questions-5">Questions</h3>
+
+
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+        
+          
+        
+        
+          
+        
+        
+        
+        
+          
+        
+        
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+
+
+
+  
+          
+                <ul>
+                  
+                    <li>
+                    
+                      <b>Do you prevent build of software if it&#39;s affected by vulnerabilities in dependencies?</b><br/>
+                      Criteria:
+                      <ul>
+                        
+                          <li>Your build system is connected to a system for tracking 3rd party dependency risk, causing build to fail unless the vulnerability is evaluated to be a false positive or the risk is explicitely accepted.</li>
+                        
+                          <li>You scan your dependencies using a static analysis tool</li>
+                        
+                          <li>You report findings back to dependency authors using an established responsible disclosure process</li>
+                        
+                          <li>Using a new dependency which has not been evaluated for security risk causes failing the build</li>
+                        
+                      </ul>
+                      Answer Options:
+                      <ul>
+                        
+                          <li>
+                            No - 0
+                          </li>
+                        
+                          <li>
+                            Yes, for some applications - 0.25
+                          </li>
+                        
+                          <li>
+                            Yes, for at least half of the applications - 0.5
+                          </li>
+                        
+                          <li>
+                            Yes, for the majority of applications - 1
+                          </li>
+                        
+                      </ul>
+                      <br/>
+                    
+                    </li>
+                  
+                  </ul>
+          
+      
+
+
+
+<h3 id="quality-indicators-1">Quality Indicators</h3>
+
+<ul>
+<li>You assess the security of important 3rd party dependencies. The dependencies are either flagged during a risk analysis or threat modelling, or are of high value to business</li>
+<li>The organisation actively contributes security improvements to important 3rd party dependencies (testing, reports, features)</li>
+<li>Security is an important factor during 3rd party dependency selection</li>
+<li>Important 3rd party dependencies have an assigned owner within the organisation. For sufficiently important dependencies, the owner may also be the dependency’s champion</li>
+<li>You use multiple intelligence feeds to track the security of 3rd party dependencies</li>
+<li>There is an active policy to minimise the number of different versions of 3rd party dependencies</li>
+</ul>
+
+<!--
+#### Notes
+Add other verification activities as well. [Generalised the content in question. CC]
+-->
+
+    </div>
+  </main>
+</div>
+
+
+
+
+<script src="/js/semantic.min.js" data-no-instant></script>
+<script src="/js/jquery.peity.min.js" data-no-instant></script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('.sidebar')
+    .sidebar('setting', 'transition', 'push')
+    .sidebar('setting', 'closable' , false)
+    .sidebar('setting', 'dimPage' , false);
+    $('.donut').peity('donut');
+    $('.ui.accordion').accordion();
+  });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
