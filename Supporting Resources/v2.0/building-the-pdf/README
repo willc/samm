@@ -41,3 +41,10 @@ To change the content of the pdf:
   - if you're formatting things using css, update the files in css/
   - generate the html and pdf using pandoc.
 
+
+# Running the code
+The code is in samm2-yaml2pdf.tgz
+Extract it, update the Datafiles from a master branch, then run ./make_pdf.sh. 
+The pdf will be in pdf/samm.pdf
+
+You'll probably need to pull a bunch of dependencies to get the code working though. Will bundle it as a docker image once there's sufficient need.
